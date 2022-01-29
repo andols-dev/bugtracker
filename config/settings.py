@@ -132,3 +132,6 @@ LOGIN_REDIRECT_URL = 'startpage'
 LOGOUT_REDIRECT_URL = 'login'
 
 LOGIN_URL = 'login'
+
+DEFAULT_FROM_EMAIL = 'andreas@dev.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
