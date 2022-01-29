@@ -1,1 +1,16 @@
-startpage
+{% extends 'partials/base.html' %}
+
+{% block title %}
+  Bugtracker 
+{% endblock title %}
+
+
+{% block content %}
+  
+
+    after
+    {% if user.is_authenticated %}
+        hello {{user.username}}
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% endif %}
+{% endblock content %}
