@@ -5,51 +5,51 @@
 {% endblock title %}
 
 {% block content %}
-      
+  
 
 
-
+<hr>
 
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
  
-    <div class="max-w-md w-full space-y-8">
-      {% if messages %}
-      <div class="messages">
-          {% for message in messages %}
-          <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-            <div class="flex">
-              <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-              <div>
-                <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-      
-              </div>
+  <div class="max-w-md w-full space-y-8">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+          <div class="flex">
+            <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+            <div>
+              <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    
             </div>
           </div>
-          {% endfor %}
-      </div>
-      {% endif %}
-      <div>
-               <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                <i class="fas fa-bug"></i>  Bug tracker
-          </h2>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Sign up
-        </h2>
-        
-      </div>
-      
-      {% load tailwind_filters %}
-      <form class="mt-8 space-y-6" method="post">
-        {% csrf_token %}
-        {{form | crispy}}
-        
-          
-    </form>
-    <a href="{% url 'sign_up' %}" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" type="submit"><span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            
-    </span>Sign up</a>
-
+        </div>
+        {% endfor %}
     </div>
-</div>
+    {% endif %}
+    <div>
+             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <i class="fas fa-bug"></i>  Bug tracker
+        </h2>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Sign in to your account
+      </h2>
+      
+    </div>
+    
+    {% load tailwind_filters %}
+    <form class="mt-8 space-y-6" method="post">
+      {% csrf_token %}
+      {{form | crispy}}
+      
+      <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">sign up</button>
+
+  </form>
   
-  {% endblock content %}
+
+  </div>
+</div>
+      {% endblock content %}
+
+
