@@ -19,8 +19,6 @@ from accounts.views import startpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', startpage,name="startpage"),
-
+    path('',include('projects.urls')),
     path('accounts/', include('accounts.urls')),
-    
 ]
