@@ -9,6 +9,10 @@ class Project(models.Model):
     updated = models.DateTimeField(auto_now=True)
     lead = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True,related_name='lead')
     member = models.ManyToManyField(User,related_name='member')
+
+    def bugs(self):
+        return self.bug_set.all()
+        
     def __str__(self):
         return self.name
 
