@@ -13,8 +13,8 @@ class Project(models.Model):
     def bugs(self):
         return self.bug_set.all()
 
-    def bugs_count(self):
-        return self.bug_set.all().count()    
+    # def bugs_count(self):
+    #     return self.bug_set.all().count()    
         
     def __str__(self):
         return self.name
