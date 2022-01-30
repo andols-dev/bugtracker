@@ -37,7 +37,7 @@ class Bug(models.Model):
     description = models.TextField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    created_by = models.OneToOneField(User,on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
     priority = models.CharField(max_length=2, choices = PRIORITY_CHOICES)
     state = models.CharField(max_length=2, choices = STATE_CHOICES)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
