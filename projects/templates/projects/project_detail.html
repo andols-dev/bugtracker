@@ -31,7 +31,7 @@
           </h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ project.name }}</h1>
           Team members:
-          {% for p_member in project_members  %}
+          {% for p_member in project.project_members  %}
             {{ p_member.username }}
           {% endfor %}
           <div class="flex mb-4">
