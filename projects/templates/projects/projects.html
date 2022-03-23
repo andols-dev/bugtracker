@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  <h1 class="text-5xl font-medium leading-tight mt-0 mb-2 ">Projects</h1>    
+  <h1>Projects</h1>    
 
   {% for project in projects  %}
     <div>
@@ -18,7 +18,7 @@
       <div>
         <h2>{{ project.name }}</h2>
         <p>Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-        <a href="{% url 'project-detail' project.id %}">Details</a>
+        <a href="{{ project.get_absolute_url }}">Details</a>
       </div>
     </div>
   {% endfor %}
