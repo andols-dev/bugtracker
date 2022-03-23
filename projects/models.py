@@ -3,11 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class ProjectManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset()
-
-
 class Project(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=200)
@@ -17,7 +12,6 @@ class Project(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True, related_name='lead')
     member = models.ManyToManyField(User, related_name='member')
     objects = models.Manager()
-    projects = ProjectManager()
 
     def unresolved_bugs(self):
         return self.bug_set.filter(state='UN')
