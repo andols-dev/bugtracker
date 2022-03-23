@@ -2,6 +2,10 @@ from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
+class ProjectManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()
+
 class Project(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=200)
@@ -9,12 +13,23 @@ class Project(models.Model):
     updated = models.DateTimeField(auto_now=True)
     lead = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True,related_name='lead')
     member = models.ManyToManyField(User,related_name='member')
+    objects = models.Manager()
+    projects = ProjectManager()
+    
 
-    def bugs(self):
-        return self.bug_set.all()
+    # def bugs(self):
+    #     return self.bug_set.all()
+
+
+    def unresolved_bugs(self):
+        return self.bug_set.filter(state='UN')
+
+    def resolved_bugs(self):
+        return self.bug_set.filter(state='RE')
 
     # def bugs_count(self):
     #     return self.bug_set.all().count()    
+
         
     def __str__(self):
         return self.name

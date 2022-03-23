@@ -31,7 +31,7 @@
           </h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ project.name }}</h1>
           Team members:
-          {% for p_member in project.member.all  %}
+          {% for p_member in project_members  %}
             {{ p_member.username }}
           {% endfor %}
           <div class="flex mb-4">
@@ -80,7 +80,8 @@
       <div class="flex flex-col">
         <h2 class="mb-5 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
           Unresolved bugs:
-          {{ unresolved_bugs }}
+          {% comment %} {{ unresolved_bugs }} {% endcomment %}
+          {{ project.unresolved_bugs | length }}
         </h2>
         Unresolved bugs
 
@@ -103,11 +104,11 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  {% for project_bug in project.bugs  %}
+                  {% for project_bug in project.unresolved_bugs  %}
                    
                   
                   <tr>
-                    {% if project_bug.state == 'UN' %}
+                    
 
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
@@ -126,7 +127,7 @@
                         </div>
                       </div>
                     </td>
-                    {% endif %}
+                   
 
                     
                     
@@ -161,7 +162,8 @@
       <div class="flex flex-col">
         <h2 class="mb-5 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
           Resolved bugs:
-          {{ resolved_bugs }}
+          {% comment %} {{ resolved_bugs }} {% endcomment %}
+          {{ project.resolved_bugs | length }}
         </h2>
 
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -183,11 +185,11 @@
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                  {% for project_bug in project.bugs  %}
+                  {% for project_bug in project.resolved_bugs  %}
                    
                   
                   <tr>
-                    {% if project_bug.state == 'RE' %}
+                    
 
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
@@ -206,7 +208,7 @@
                         </div>
                       </div>
                     </td>
-                    {% endif %}
+                    
 
                     
                     
