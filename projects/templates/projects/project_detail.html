@@ -1,149 +1,49 @@
 {% extends "partials/base.html" %}
-{% block title %}
-    Project detail | {{ project.name }}
-{% endblock title %}
-{% block content %}
-    <section>
-        <div>
-            <div>
-                <div>
-                    {% if messages %}
-                        <div class="messages">
-                            {% for message in messages %}
-                                <div role="alert">
-                                    <div>
-                                        <div>
-                                            <svg class="fill-current h-6 w-6 text-teal-500 mr-4"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 viewBox="0 0 20 20">
-                                                <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    <h2>Details</h2>
-                    <h1>{{ project.name }}</h1>
-                    Team members:
-                    {% for p_member in project.project_members  %}{{ p_member.username }}{% endfor %}
-                    <div >
-                        <a>Details</a>
-                        {% if post.author == request.user %}
-                            <a>Update</a>
-                            <a>Delete</a>
-                        {% endif %}
-                    </div>
-                    <p>
-                        {{ post.content }}
-                    </p>
 
-                    {% if not post.author == request.user %}
-                        <h1>Add a comment</h1>
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit"  value="comment">
-                        </form>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <div>
-            <div>
-                <div>
-                    <h2>
-                        Unresolved bugs:
-                        {% comment %} {{ unresolved_bugs }} {% endcomment %}
-                        {{ project.unresolved_bugs | length }}
-                    </h2>
-                    Unresolved bugs
-                    <div>
-                        <div>
-                            <div>
-                                <table>
-                                    <thead >
-                                        <tr>
-                                            <th>Commented by:</th>
-                                            <th>Comment</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody >
-                                        {% for project_bug in project.unresolved_bugs  %}
-                                            <tr>
-                                                <td>
-                                                    <div>
-                                                        <div ></div>
-                                                        <div>
-                                                            <div>{{ project_bug.name }}</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                        <!-- More people... -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<hr>
-<section>
-    <div>
-        <div>
-            <div>
-                <h2>
-                    Resolved bugs:
-                    {% comment %} {{ resolved_bugs }} {% endcomment %}
-                    {{ project.resolved_bugs | length }}
-                </h2>
-                <div>
-                    <div>
-                        <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Commented by:
-                                        </th>
-                                        <th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for project_bug in project.resolved_bugs  %}
-                                        <tr>
-                                            <td>
-                                                <div>
-                                                    <div></div>
-                                                    <div>
-                                                        <div>{{ project_bug.name }}</div>
-                                                        <div></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    <!-- More people... -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
+{% block title %}
+  Project detail | {{ project.name }}
+{% endblock title %}
+
+{% block content %}
+  <h2>Details</h2>
+  <h1>{{ project.name }}</h1>
+  Team members:
+  {% for p_member in project.project_members %} 
+    {{ p_member.username }} 
+  {% endfor %}
+  <div>
+      {% if post.author == request.user %}
+          <a>Update</a>
+          <a>Delete</a>
+      {% endif %}
+  </div>
+
+  {% if not post.author == request.user %}
+      <h1>Add a comment</h1>
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit"  value="comment">
+      </form>
+  {% endif %}
+
+  <h2>
+    Unresolved bugs:
+    {% comment %} {{ unresolved_bugs }} {% endcomment %}
+    {{ project.unresolved_bugs | length }}
+  </h2>
+
+  {% for project_bug in project.unresolved_bugs %}
+    <div>{{ project_bug.name }}</div>
+  {% endfor %}
+
+  <h2>
+      Resolved bugs:
+      {% comment %} {{ resolved_bugs }} {% endcomment %}
+      {{ project.resolved_bugs | length }}
+  </h2>
+{% for project_bug in project.resolved_bugs  %}
+  <div>{{ project_bug.name }}</div>
+{% endfor %}
+
 {% endblock content %}
