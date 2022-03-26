@@ -51,6 +51,7 @@ def create_Project(request):
     form = CreateProjectForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('projects')
 
     context = {'form': form}
     return render(request, 'projects/create_project.html', context)
