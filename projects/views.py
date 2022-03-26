@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Project,Bug
 from django.contrib.auth.decorators import login_required
 from .forms import CreateProjectForm, createBugForm, BugMessageForm
@@ -21,13 +21,8 @@ def project_detail(request, id):
         form.created_by = request.user
         form.project = project
         form.save()
-    
-    # this is a message on the bug not the project, maybe move this form to a bug detail page
-    # project_message_form = projectMessageForm(request.POST or None)
-    # if project_message_form.is_valid():
-    #     message_form = form.save(commit=False)
-    #     # id of the bug
-    #     message_form.Bug = bug
+        return redirect('project-detail',id = id)
+ 
 
     context = {
         'project': project,
