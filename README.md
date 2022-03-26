@@ -32,6 +32,6 @@ Sign up success
 
 Create project
 
-![2022-03-26 15 33 13 127 0 0 1 1b2e99acf9d2](https://user-images.githubusercontent.com/60063451/160244241-52c97ce2-8e4c-41c6-9e64-6e1d297e58a6.jpg)
 
+![2022-03-26 15 42 00 127 0 0 1 25e49c257a50](https://user-images.githubusercontent.com/60063451/160244528-efaaf74c-88d1-4369-bbee-2682e517eae8.jpg)
 
