@@ -53,7 +53,7 @@ def resolved_bugs(self):
 
 ```
 
-## To get the count of the resolved and unresolved bugs I 'am using template tags in the html template.
+### To get the count of the resolved and unresolved bugs I 'am using template tags in the html template.
 ``` html
 <h2>
   Unresolved bugs:
