@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'accounts',
     'projects',
     "crispy_forms",
-    "crispy_tailwind",
+    "crispy_bootstrap5",
 ]
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-CRISPY_TEMPLATE_PACK = "tailwind"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
