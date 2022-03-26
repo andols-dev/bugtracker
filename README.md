@@ -41,6 +41,8 @@ Project details page, add bugs
 
 ![2022-03-26 16 36 27 127 0 0 1 428bc05e863e](https://user-images.githubusercontent.com/60063451/160246641-94849edf-f6b7-43f4-8c1e-fbc4a2ed3d3e.jpg)
 
+I made two functions on the project model to get resolved and unresolved bugs.
+
 ``` python
 
 def unresolved_bugs(self):
@@ -51,5 +53,12 @@ def resolved_bugs(self):
 
 ```
 
+To get the count of the resolved and unresolved bugs I 'am using template tags in the html template.
+``` html
+<h2>
+  Unresolved bugs:
+  {% comment %} {{ unresolved_bugs }} {% endcomment %}
+  {{ project.unresolved_bugs | length }}
+</h2>
 
-
+```
