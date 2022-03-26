@@ -26,5 +26,5 @@ Login validation
 ![2022-03-26 13 22 46 127 0 0 1 f65716f6f81c](https://user-images.githubusercontent.com/60063451/160239380-1171636b-4c5d-4027-94d0-4e8754f7b841.jpg)
 ![2022-03-26 13 24 07 127 0 0 1 59aa92d2cd04](https://user-images.githubusercontent.com/60063451/160239388-368c8d2c-9c0b-4a92-95d6-8d2c4a4f7ac6.jpg)
 
-Login success
+Sign up success
 ![2022-03-26 13 24 44 127 0 0 1 6409ee5daf3e](https://user-images.githubusercontent.com/60063451/160239390-dd3becf8-0a1a-4f77-9e05-2b4d24708fea.jpg)
