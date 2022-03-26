@@ -20,11 +20,7 @@
 
   {% if not post.author == request.user %}
       <h1>Add a comment</h1>
-      <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit"  value="comment">
-      </form>
+
   {% endif %}
 
   <h2>
@@ -46,4 +42,12 @@
   <div>{{ project_bug.name }}</div>
 {% endfor %}
 
+
+<hr>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit"  value="add bug">
+</form>
 {% endblock content %}
