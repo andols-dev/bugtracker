@@ -1,0 +1,37 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+  Project detail | {{ project.name }}
+{% endblock title %}
+
+{% block content %}
+  <h2>Details</h2>
+  <h1>{{ bug.name }}</h1>
+
+  <div>
+      {% if bug.created_by == request.user %}
+          <a>Update</a>
+          <a>Delete</a>
+      {% endif %}
+  </div>
+
+ {% comment %}  {% if not post.author == request.user %}
+      <h1>Add a comment</h1>
+
+  {% endif %} {% endcomment %}
+
+
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Add message</button>
+</form>
+
+all messages
+{% for bug_message in bug.get_bug_messages %}
+  <div>{{ bug_message.content }}</div>
+{% endfor %}
+{% endblock content %}
+
+

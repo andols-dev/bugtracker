@@ -50,8 +50,14 @@ class Bug(models.Model):
     state = models.CharField(max_length=2, choices=STATE_CHOICES)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
+
+    def get_absolute_url(self):
+        return reverse("bug-detail", kwargs={"id": self.id})
     def __str__(self):
         return self.name
+
+    def get_bug_messages(self):
+        return self.message_set.all()
 
 
 class Message(models.Model):

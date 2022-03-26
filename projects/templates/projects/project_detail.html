@@ -39,7 +39,7 @@
       {{ project.resolved_bugs | length }}
   </h2>
 {% for project_bug in project.resolved_bugs  %}
-  <div>{{ project_bug.name }}</div>
+  <div><a href="{{ project_bug.get_absolute_url }}">{{ project_bug.name }}</a></div>
 {% endfor %}
 
 
