@@ -39,4 +39,7 @@ Project details page, add bugs
 
 ![2022-03-26 16 34 21 127 0 0 1 f8194f286174](https://user-images.githubusercontent.com/60063451/160246511-1a154b07-d201-4cae-8e4b-fe9584a9056f.jpg)
 
+![2022-03-26 16 36 27 127 0 0 1 428bc05e863e](https://user-images.githubusercontent.com/60063451/160246641-94849edf-f6b7-43f4-8c1e-fbc4a2ed3d3e.jpg)
+
+
 
