@@ -31,7 +31,7 @@ def project_detail(request, id):
     return render(request, 'projects/project_detail.html', context)
 
 
-
+@login_required
 def bug_detail(request,id):
     bug = get_object_or_404(Bug, id=id)
     bug_message_form = BugMessageForm(request.POST or None)
@@ -46,7 +46,7 @@ def bug_detail(request,id):
     return render(request, 'projects/bug_detail.html', context)
 
 
-
+@login_required
 def create_Project(request): 
     form = CreateProjectForm(request.POST or None)
     if form.is_valid():
