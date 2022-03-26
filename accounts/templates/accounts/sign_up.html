@@ -5,18 +5,31 @@
 {% endblock title %}
 
 {% block content %}
-<div>
-  <h2>
-    <i class="fas fa-bug"></i>  Bug tracker
-  </h2>
-  <h2>
-    Sign in to your account
-  </h2>
+{% comment %} todo: center messages {% endcomment %}
+{% if messages %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            {% for message in messages %}<div class="alert alert-success" role="alert">{{ message }}</div>{% endfor %}
+        </div>
+    </div>
+  </div>
+{% endif %}
+<div class="container mt-5">
+  <h2 class="text-center"><i class="fas fa-bug"></i>  Bug tracker</h2>
+  <h2 class="text-center">Sign up</h2>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      {% load crispy_forms_tags %}
+      <form method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          sign up
+        </button>   
+      </form>
+  </div>
+  </div>
 </div>
-    
-<form method="post">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button type="submit">sign up</button>
-</form>
 {% endblock content %}
