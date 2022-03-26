@@ -32,6 +32,17 @@
 
 ### Create project
 
+``` python
+def create_Project(request): 
+    form = CreateProjectForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('projects')
+
+    context = {'form': form}
+    return render(request, 'projects/create_project.html', context)
+```
+
 
 ![2022-03-26 15 42 00 127 0 0 1 25e49c257a50](https://user-images.githubusercontent.com/60063451/160244528-efaaf74c-88d1-4369-bbee-2682e517eae8.jpg)
 
