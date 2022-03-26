@@ -41,5 +41,15 @@ Project details page, add bugs
 
 ![2022-03-26 16 36 27 127 0 0 1 428bc05e863e](https://user-images.githubusercontent.com/60063451/160246641-94849edf-f6b7-43f4-8c1e-fbc4a2ed3d3e.jpg)
 
+``` python
+
+def unresolved_bugs(self):
+  return self.bug_set.filter(state='UN')
+
+def resolved_bugs(self):
+  return self.bug_set.filter(state='RE')
+
+```
+
 
 
