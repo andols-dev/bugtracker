@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Project,Bug
 from django.contrib.auth.decorators import login_required
-from .forms import createBugForm, BugMessageForm
+from .forms import CreateProjectForm, createBugForm, BugMessageForm
 
 
 
@@ -49,3 +49,13 @@ def bug_detail(request,id):
     context = {'bug': bug, 'form': bug_message_form}
 
     return render(request, 'projects/bug_detail.html', context)
+
+
+
+def create_Project(request): 
+    form = CreateProjectForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {'form': form}
+    return render(request, 'projects/create_project.html', context)
