@@ -5,49 +5,70 @@
 {% endblock title %}
 
 {% block content %}
-  <h2>Details</h2>
-  <h1>{{ project.name }}</h1>
-  Team members:
-  {% for p_member in project.project_members %} 
-    {{ p_member.username }} 
-  {% endfor %}
-  <div>
-      {% if post.author == request.user %}
-          <a>Update</a>
-          <a>Delete</a>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>Project details</h2>
+      <h1>{{ project.name }}</h1>
+      <span>Team members:</span>
+      {% for p_member in project.project_members %} 
+        {{ p_member.username }} 
+      {% endfor %}
+      
+      {% if project.lead %}
+        <p>Team lead: {{ project.lead }}</p>
       {% endif %}
+        
+      
+      <hr>
+      <h2>
+        Unresolved bugs:
+        {% comment %} {{ unresolved_bugs }} {% endcomment %}
+        {{ project.unresolved_bugs | length }}
+      </h2>
+    
+      {% for project_bug in project.unresolved_bugs %}
+        <div><a href="{{ project_bug.get_absolute_url }}">{{ project_bug.name }}</a></div>
+      {% endfor %}
+    
+      <h2 class="mt-5">
+          Resolved bugs:
+          {% comment %} {{ resolved_bugs }} {% endcomment %}
+          {{ project.resolved_bugs | length }}
+      </h2>
+    {% for project_bug in project.resolved_bugs  %}
+      <div><a href="{{ project_bug.get_absolute_url }}">{{ project_bug.name }}</a></div>
+    {% endfor %}
+      <div>
+          {% if post.author == request.user %}
+              <a>Update</a>
+              <a>Delete</a>
+          {% endif %}
+      </div>
+    </div>
+    <div class="col-6">
+      <h2>Add bug</h2>
+      {% load crispy_forms_tags %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary">Add bug</button>
+      </form>
+    </div>
   </div>
+</div>
 
-  {% if not post.author == request.user %}
-      <h1>Add a comment</h1>
-
-  {% endif %}
-
-  <h2>
-    Unresolved bugs:
-    {% comment %} {{ unresolved_bugs }} {% endcomment %}
-    {{ project.unresolved_bugs | length }}
-  </h2>
-
-  {% for project_bug in project.unresolved_bugs %}
-    <div>{{ project_bug.name }}</div>
-  {% endfor %}
-
-  <h2>
-      Resolved bugs:
-      {% comment %} {{ resolved_bugs }} {% endcomment %}
-      {{ project.resolved_bugs | length }}
-  </h2>
-{% for project_bug in project.resolved_bugs  %}
-  <div><a href="{{ project_bug.get_absolute_url }}">{{ project_bug.name }}</a></div>
-{% endfor %}
 
 
 <hr>
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit"  value="add bug">
-</form>
+
+{% comment %}   {% if not post.author == request.user %}
+      <h1>Add a comment</h1>
+
+  {% endif %} {% endcomment %}
+
+  
+
 {% endblock content %}
