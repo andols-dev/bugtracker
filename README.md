@@ -47,6 +47,27 @@ def create_Project(request):
 ![2022-03-26 15 42 00 127 0 0 1 25e49c257a50](https://user-images.githubusercontent.com/60063451/160244528-efaaf74c-88d1-4369-bbee-2682e517eae8.jpg)
 
 ### Project details page, add bugs
+``` python
+@login_required
+def project_detail(request, id):
+    project = get_object_or_404(Project, id=id)
+
+    form = createBugForm(request.POST or None)
+    if form.is_valid():
+        form = form.save(commit=False)
+        form.created_by = request.user
+        form.project = project
+        form.save()
+        return redirect('project-detail',id = id)
+ 
+
+    context = {
+        'project': project,
+        'form': form,
+    }
+    return render(request, 'projects/project_detail.html', context)
+
+```
 
 ![2022-03-26 16 34 21 127 0 0 1 f8194f286174](https://user-images.githubusercontent.com/60063451/160246511-1a154b07-d201-4cae-8e4b-fe9584a9056f.jpg)
 
