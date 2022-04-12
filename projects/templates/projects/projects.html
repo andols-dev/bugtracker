@@ -6,20 +6,27 @@
 
 
 {% block content %}
-
+<div class="container">
   <h1>Projects</h1>    
 
-  {% for project in projects  %}
-    <div>
-      <div>
-        <h2>Created: {{ project.created }}</h2>
-      </div>
-      <div>
-        <h2>{{ project.name }}</h2>
-        <p>Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-        <a href="{{ project.get_absolute_url }}">Details</a>
-      </div>
-    </div>
-  {% endfor %}
-
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Created</th>
+      <th scope="col">Name</th>
+      <th scope="col">Lead</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for project in projects  %}
+      <tr>
+        <td>{{ project.created }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ project.lead }}</td>
+        <td><a href="{{ project.get_absolute_url }}">Details</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
 {% endblock content %}
