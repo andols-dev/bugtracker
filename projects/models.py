@@ -31,6 +31,9 @@ class Project(models.Model):
 
     def get_edit_url(self):
         return reverse("edit", kwargs={"id": self.id})
+
+    class Meta:
+        ordering = ["-created"]
     
 
 

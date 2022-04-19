@@ -57,7 +57,7 @@ def create_Project(request):
         return redirect('projects')
 
     context = {'form': form}
-    return render(request, 'projects/create_project.html', context)
+    return render(request, 'projects/project_form.html', context)
 
 @login_required
 def edit(request, id):
