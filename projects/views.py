@@ -58,3 +58,14 @@ def create_Project(request):
 
     context = {'form': form}
     return render(request, 'projects/create_project.html', context)
+
+@login_required
+def edit(request, id):
+    print(request.path)
+    project = Project.objects.get(id=id)
+    form = CreateProjectForm(request.POST or None, instance=project)
+    if form.is_valid():
+        form.save()
+        return redirect('projects')
+
+    return render(request, 'projects/project_form.html', {'form': form})

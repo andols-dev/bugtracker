@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% block title %}
+    Create project
+{% endblock title %}
+
+{% block content %}
+
+
+
+    
+<div class="container mt-5">
+    {% if 'edit' in request.path %}
+        <h2 class="text-center"><i class="fas fa-bug"></i>Edit project</h2>
+    {% elif 'create' in request.path %}
+        <h2 class="text-center"><i class="fas fa-bug"></i>Create project</h2>
+    {% endif %}
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form method="post">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ form | crispy }}
+            {% if 'edit' in request.path %}
+            <button type="submit" role="button" class="btn btn-primary">Edit</button>
+        {% elif 'create' in request.path %}
+        <button type="submit" role="button" class="btn btn-primary">Create</button>
+        {% endif %}
+            
+        </form>
+      </div>
+    <div>
+</div>
+{% endblock content %}

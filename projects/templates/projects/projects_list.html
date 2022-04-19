@@ -7,6 +7,7 @@
     {{ p_member.username }} 
   {% endfor %}</td>
   <td><a href="{{ project.get_absolute_url }}">Details</a></td>
+  <td><a href="{{ project.get_edit_url }}">Edit</a></td>
 
 </tr>
 {% endfor %}
