@@ -8,9 +8,12 @@ from .forms import CreateProjectForm, createBugForm, BugMessageForm
 
 @login_required
 def projects(request):
-    projects = Project.objects.all()
-    return render(request,'projects/projects.html',{'projects': projects})
+    
+    return render(request,'projects/projects.html')
 
+def projects_list(request):
+    projects = Project.objects.all()
+    return render(request,'projects/projects_list.html',{'projects': projects})
 @login_required
 def project_detail(request, id):
     project = get_object_or_404(Project, id=id)

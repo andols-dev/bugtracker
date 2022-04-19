@@ -1,0 +1,12 @@
+{% for project in projects  %}
+<tr>
+  <td>{{ project.created }}</td>
+  <td>{{ project.name }}</td>
+  <td>{{ project.lead }}</td>
+  <td>      {% for p_member in project.project_members %} 
+    {{ p_member.username }} 
+  {% endfor %}</td>
+  <td><a href="{{ project.get_absolute_url }}">Details</a></td>
+
+</tr>
+{% endfor %}
